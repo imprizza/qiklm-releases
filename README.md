@@ -4,12 +4,13 @@
 
 # QikLM
 
-### The qikest and easiest way to run local AI. A high-performance orchestration layer and web console for `llama.cpp`.
+### The qikest and easiest way to run local AI. A high-performance orchestration layer and web console for `llama.cpp` and `vLLM`.
 
 **Free for home and work use. 100% private, local, and offline.**
 
 <p>
   <img src="https://img.shields.io/badge/llama.cpp-Compatible-black?style=for-the-badge" alt="llama.cpp Compatible" />
+  <img src="https://img.shields.io/badge/vLLM-Compatible-30A2FF?style=for-the-badge" alt="vLLM Compatible" />
   <img src="https://img.shields.io/badge/OpenAI_API-Compatible-412991?style=for-the-badge" alt="OpenAI API Compatible" />
   <img src="https://img.shields.io/badge/Anthropic_API-Compatible-d4a574?style=for-the-badge" alt="Anthropic API Compatible" />
   <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
@@ -27,14 +28,14 @@
 > [!TIP]
 > **Break free from the CLI.** Local AI doesn't have to be painful.
 
-**QikLM** is a small, lightweight orchestration layer and web console for `llama.cpp`. It manages your local model weights, handles engine lifecycle, and serves a full-featured web UI and premium chat workspace, all from a single binary with zero dependencies. No wrappers, no abstraction layers; just bare-metal access to `llama.cpp` with a management layer on top.
+**QikLM** is a small, lightweight orchestration layer and web console for `llama.cpp` and `vLLM`. It manages your local model weights, handles engine lifecycle, and serves a full-featured web UI and premium chat workspace, all from a single binary with zero dependencies. No wrappers, no abstraction layers; just bare-metal access to your engine with a management layer on top.
 
-Use any `llama.cpp` build you want, or let QikLM install a managed release for you directly from Github. No lock-in, no bloat.
+Run `llama.cpp` or `vLLM`: use any build you want, or let QikLM install a managed `llama.cpp` release for you directly from Github. No lock-in, no bloat.
 
 - **Privacy**: 100% local and offline. Zero cloud telemetry. Your models and data never leave your machine.
 - **Orchestration**: Automatic model booting, VRAM management, lifecycle control, and real-time GPU monitoring (VRAM, temperature, power, load) via lmtop.
 - **PromptUI**: A premium chat workspace with an interactive canvas, multimodal support, document handling (PDF, DOCX, Office), OCR for images and PDFs, Brave web search, workspace projects, and HTTP MCP integration.
-- **Bring Your Own Binary**: Drop in your own `llama.cpp` build, use a fork, or install up to 5 managed releases directly from the dashboard.
+- **Bring Your Own Binary**: Drop in your own `llama.cpp` or `vLLM` build, use a fork, or install up to 5 managed `llama.cpp` releases directly from the dashboard.
 - **Network-Ready**: Access the full web UI from any pc or mobile device on your network. Already on Tailscale or a VPN? Enable LAN mode and you're done.
 - **Convenience**: Studio-style ease of use with full engine flexibility and raw performance. No compromises.
 - **Simplicity**: Get up and running in seconds with a [pre-compiled binary or native Linux package](#installation).
@@ -43,7 +44,7 @@ Use any `llama.cpp` build you want, or let QikLM install a managed release for y
 
 ## What QikLM Is Not
 
-- **Not** a standalone inference engine. It orchestrates your existing `llama.cpp` builds.
+- **Not** a standalone inference engine. It orchestrates your existing `llama.cpp` and `vLLM` installs.
 - **Not** another bloated all-in-one desktop app. One binary, no Electron, no Docker, no Python.
 
 ---
@@ -51,7 +52,7 @@ Use any `llama.cpp` build you want, or let QikLM install a managed release for y
 ## The Motivation: A Stateful Bridge
 
 > [!IMPORTANT]
-> **The Problem:** `llama-server` is the gold standard for local AI performance, but it is inherently **stateless**. Every time you close a terminal, your engine flags and configurations vanish.
+> **The Problem:** Inference servers like `llama-server` and `vLLM` are the gold standard for local AI performance, but they are inherently **stateless**. Every time you close a terminal, your engine flags and configurations vanish.
 >
 > **The Solution:** QikLM is the **stateful bridge**. It transforms raw CLI processes into a persistent, managed service that remembers exactly how every model should run, so you don't have to.
 
@@ -63,8 +64,8 @@ Use any `llama.cpp` build you want, or let QikLM install a managed release for y
 ### The Orchestration
 QikLM sits between your inference engine and your applications, turning manual terminal work into a persistent background service.
 
-- **Auto-Boot**: Send a prompt from PromptUI, any OpenAI-compatible frontend, or a coding harness — QikLM automatically boots `llama-server` with the correct model and profile settings. No manual startup required.
-- **Seamless Model Switching**: Switch models mid-session. QikLM handles swapping the background `llama-server` instance automatically.
+- **Auto-Boot**: Send a prompt from PromptUI, any OpenAI-compatible frontend, or a coding harness, and QikLM automatically boots your engine (`llama-server` or `vLLM`) with the correct model and profile settings. No manual startup required.
+- **Seamless Model Switching**: Switch models mid-session. QikLM handles swapping the background engine instance automatically.
 - **Lifecycle Control**: Load and unload models with a single click from the dashboard.
 - **Profile-Based Startups**: Save your flags once per model. Choose different `llama.cpp` builds per profile. Launch with a click.
 
@@ -74,8 +75,8 @@ QikLM sits between your inference engine and your applications, turning manual t
 
 - **Smart Model Profiles**: Save GPU layers, context size, threads, and custom CLI flags per model. Every profile keeps its own runtime recipe.
 - **Reusable Profile Templates**: Create named presets for common launch settings and apply them when building new profiles.
-- **Full CLI Passthrough**: The UI covers common flags, but every profile also has a raw CLI argument field for any `llama.cpp` flag you need.
-- **Multi-Binary Support**: Register up to 5 different `llama.cpp` builds. Assign specific builds per model profile to test newer features or optimizations.
+- **Full CLI Passthrough**: The UI covers common flags, but every profile also has a raw CLI argument field for any `llama.cpp` or `vLLM` flag you need.
+- **Multi-Binary Support**: Register up to 5 different `llama.cpp` builds, or point at a single `vLLM` install. Assign specific builds per model profile to test newer features or optimizations.
 - **PromptUI Workspace**: Built-in chat GUI with an interactive canvas for live code editing and HTML previews, workspace projects, document handling (PDF, DOCX), image and PDF OCR, multimodal attachments, Brave web search, and MCP resource injection.
 - **lmtop Telemetry**: Real-time GPU observability. Monitor VRAM, temperature, power, and load from the dashboard or PromptUI side panel.
 - **Auto VRAM Unloading**: Automatically frees GPU memory after a configurable period of inactivity.
@@ -112,15 +113,15 @@ Any client supporting OpenAI or Anthropic standards can interface with QikLM's l
 
 ### Control Center Overview
 
-> <img width="1928" height="1075" alt="Screenshot_20260517_032435" src="https://github.com/user-attachments/assets/4989665a-565d-4414-8050-4aced496946c" />
+> <img width="1722" height="970" alt="Screenshot_20260616_023228" src="https://github.com/user-attachments/assets/1b2e2103-7d9a-44b7-b97f-965ab8be31b1" />
 
 ### Model Library & Profiles
 
-> <img width="1920" height="1085" alt="Screenshot_20260517_201200" src="https://github.com/user-attachments/assets/831f2d03-a53e-47e6-af6f-fc8c39c4fe2d" />
+> <img width="1722" height="847" alt="Screenshot_20260616_045724" src="https://github.com/user-attachments/assets/379f0e16-07c3-4ee7-a979-377f6e2a3103" />
 
 ### Hugging Face Explorer
 
-> <img width="1920" height="1085" alt="Screenshot_20260517_201604" src="https://github.com/user-attachments/assets/5ec620eb-a0f8-4e37-b910-d0576e6cb282" />
+> <img width="1722" height="847" alt="Screenshot_20260616_045621" src="https://github.com/user-attachments/assets/add166b5-6055-43a5-ac8e-bd8123e9141a" />
 
 ### PromptUI Workspace with LMTOP
 
@@ -139,9 +140,9 @@ QikLM features a custom, GPU monitoring engine ("lmtop") that provides real-time
 
 ### Supported Lmtop Hardware
 
-- **Intel Arc** — Xe (Battlemage/B-Series) and i915 (Alchemist/A-Series)
-- **Nvidia** — Via built-in `nvidia-smi` parser (no CUDA SDK required)
-- **AMD** — Linux and Windows
+- **Intel Arc**: Xe (Battlemage/B-Series) and i915 (Alchemist/A-Series)
+- **Nvidia**: Via built-in `nvidia-smi` parser (no CUDA SDK required)
+- **AMD**: Linux and Windows
 
 ---
 
@@ -170,6 +171,13 @@ Native packages automatically install QikLM and set it up as a persistent backgr
 *(QikLM will automatically start in the background and run on boot.)*
 
 ### Option 2: macOS
+
+**Recommended: `.pkg` installer**
+
+1. Download the latest `.pkg` file for your chip from the **[Releases](https://github.com/imprizza/qiklm-releases/releases)** page (`qiklm_darwin_arm64.pkg` for Apple Silicon, `qiklm_darwin_amd64.pkg` for Intel).
+2. Double-click it and follow the prompts.
+
+**Alternative: `.dmg`**
 
 1. Download the latest `.dmg` file from the **[Releases](https://github.com/imprizza/qiklm-releases/releases)** page.
 2. Open the DMG and drag QikLM to your Applications folder.
@@ -200,7 +208,7 @@ http://localhost:8192/admin/
 ### 1. Engine Settings
 On first launch, QikLM opens a setup modal to configure your core engine paths:
 * The path to your local models directory.
-* The path to your compiled `llama-server` executable — or use **Managed Install** to let QikLM download and register a release for you.
+* The path to your compiled `llama-server` executable or your `vLLM` install, or use **Managed Install** to let QikLM download and register a `llama.cpp` release for you.
 
 **For SYCL Users:** Add your environment initialization command to the **Pre-Run Initialization** field:
 ```bash
@@ -214,11 +222,11 @@ Go to the **Models** tab and create a profile for your first `.gguf` model. Conf
 
 ## Remote Access
 
-QikLM is a web application — any device that can reach your host can use the full Admin Dashboard and PromptUI.
+QikLM is a web application; any device that can reach your host can use the full Admin Dashboard and PromptUI.
 
 **LAN / Home Lab**: Select **LAN** bind mode in Engine Settings. QikLM becomes accessible to every device on your local network.
 
-**Tailscale / VPN**: Already running Tailscale, WireGuard, or ZeroTier? Set bind mode to LAN and QikLM is instantly available across your entire mesh — no port forwarding, no tunnels, no extra configuration.
+**Tailscale / VPN**: Already running Tailscale, WireGuard, or ZeroTier? Set bind mode to LAN and QikLM is instantly available across your entire mesh, with no port forwarding, no tunnels, no extra configuration.
 
 ```bash
 QIKLM_BIND_MODE=lan QIKLM_BIND_ADDRESS=0.0.0.0 QIKLM_PROXY_PORT=8192 ./qiklm
@@ -244,7 +252,7 @@ sudo nano /etc/systemd/system/qiklm.service
 Replace `your_username` and paths:
 ```ini
 [Unit]
-Description=QikLM (llama.cpp orchestrator)
+Description=QikLM (llama.cpp & vLLM orchestrator)
 After=network.target
 
 [Service]
@@ -265,7 +273,7 @@ WantedBy=multi-user.target
 
 QikLM exists for a very specific kind of user:
 - someone who wants **real local performance**
-- someone who has already compiled `llama.cpp` — or wants QikLM to handle it
+- someone who already runs `llama.cpp` or `vLLM`, or wants QikLM to handle the llama.cpp setup
 - someone who does **not** want to give up convenience just to keep that performance
 
 This project is the missing middle layer between raw power and sane day-to-day use.

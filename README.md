@@ -210,7 +210,14 @@ On first launch, QikLM opens a setup modal to configure your core engine paths:
 * The path to your local models directory.
 * The path to your compiled `llama-server` executable or your `vLLM` install, or use **Managed Install** to let QikLM download and register a `llama.cpp` release for you.
 
-**For SYCL Users:** Add your environment initialization command to the **Pre-Run Initialization** field:
+**Pre-Run Initialization (optional):** This field runs any shell command before your engine starts, for any setup that needs to happen first. Chain it with `&&` so it runs ahead of the engine launch.
+
+For **vLLM**, activate the Python environment it is installed in. For example:
+```bash
+source /path/to/.venv/bin/activate &&
+```
+
+For **Intel SYCL** builds of `llama.cpp`, source the oneAPI environment. For example:
 ```bash
 source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1 &&
 ```
@@ -229,7 +236,7 @@ QikLM is a web application; any device that can reach your host can use the full
 **Tailscale / VPN**: Already running Tailscale, WireGuard, or ZeroTier? Set bind mode to LAN and QikLM is instantly available across your entire mesh, with no port forwarding, no tunnels, no extra configuration.
 
 ```bash
-QIKLM_BIND_MODE=lan QIKLM_BIND_ADDRESS=0.0.0.0 QIKLM_PROXY_PORT=8192 ./qiklm
+QIKLM_BIND_MODE=lan QIKLM_PROXY_PORT=8192 ./qiklm
 ```
 
 **Custom Bind (Advanced)**: For dedicated servers, use environment variables:

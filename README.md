@@ -4,7 +4,7 @@
 
 # QikLM
 
-### The qikest and easiest way to run local AI. A high-performance orchestration layer and web console for `llama.cpp` and `vLLM`.
+### The qikest and easiest way to run local AI. A high-performance orchestration layer and web console for `llama.cpp`, `vLLM` and remote API providers.
 
 **Free for home and work use. 100% private, local, and offline.**
 

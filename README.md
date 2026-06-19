@@ -77,6 +77,7 @@ QikLM sits between your inference engine and your applications, turning manual t
 - **Reusable Profile Templates**: Create named presets for common launch settings and apply them when building new profiles.
 - **Full CLI Passthrough**: The UI covers common flags, but every profile also has a raw CLI argument field for any `llama.cpp` or `vLLM` flag you need.
 - **Multi-Binary Support**: Register up to 5 different `llama.cpp` builds, or point at a single `vLLM` install. Assign specific builds per model profile to test newer features or optimizations.
+- **Remote API Providers**: Add hosted OpenAI-compatible providers like DeepSeek, MiniMax, GLM, and more. Run them side by side with your local models, all through one unified API.
 - **PromptUI Workspace**: Built-in chat GUI with an interactive canvas for live code editing and HTML previews, workspace projects, document handling (PDF, DOCX), image and PDF OCR, multimodal attachments, Brave web search, and MCP resource injection.
 - **lmtop Telemetry**: Real-time GPU observability. Monitor VRAM, temperature, power, and load from the dashboard or PromptUI side panel.
 - **Auto VRAM Unloading**: Automatically frees GPU memory after a configurable period of inactivity.

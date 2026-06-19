@@ -35,7 +35,7 @@ Run `llama.cpp` or `vLLM`: use any build you want, or let QikLM install a manage
 - **Privacy**: 100% local and offline. Zero cloud telemetry. Your models and data never leave your machine.
 - **Orchestration**: Automatic model booting, VRAM management, lifecycle control, and real-time GPU monitoring (VRAM, temperature, power, load) via lmtop.
 - **PromptUI**: A premium chat workspace with an interactive canvas, multimodal support, document handling (PDF, DOCX, Office), OCR for images and PDFs, Brave web search, workspace projects, and HTTP MCP integration.
-- **Bring Your Own Binary**: Drop in your own `llama.cpp` or `vLLM` build, use a fork, or install up to 5 managed `llama.cpp` releases directly from the dashboard.
+- **Bring Your Own Inference**: Drop in your own `llama.cpp` or `vLLM` build, use a fork, or install up to 5 managed `llama.cpp` releases directly from the dashboard.
 - **Network-Ready**: Access the full web UI from any pc or mobile device on your network. Already on Tailscale or a VPN? Enable LAN mode and you're done.
 - **Convenience**: Studio-style ease of use with full engine flexibility and raw performance. No compromises.
 - **Simplicity**: Get up and running in seconds with a [pre-compiled binary or native Linux package](#installation).

@@ -4,9 +4,9 @@
 
 # QikLM
 
-### The qikest and easiest way to run local AI. A high-performance orchestration layer and web console for `llama.cpp`, `vLLM` and remote API providers.
+### Your private AI router for local & remote AI. A lightweight orchestration layer and web console that runs `llama.cpp`, `vLLM`, and OpenAI-/Anthropic-compatible providers from one unified API.
 
-**Free for home and work use. 100% private, local, and offline.**
+**Free for home and work use. Local-first. Private by default. Remote-ready.**
 
 <p>
   <img src="https://img.shields.io/badge/llama.cpp-Compatible-black?style=for-the-badge" alt="llama.cpp Compatible" />
@@ -28,13 +28,13 @@
 > [!TIP]
 > **Break free from the CLI.** Local AI doesn't have to be painful.
 
-**QikLM** is a small, lightweight orchestration layer and web console for `llama.cpp` and `vLLM`. It manages your local model weights, handles engine lifecycle, and serves a full-featured web UI and premium chat workspace, all from a single binary with zero dependencies. No wrappers, no abstraction layers; just bare-metal access to your engine with a management layer on top.
+**QikLM** is a small, lightweight orchestration layer and web console that routes local and remote AI through one unified API. It manages your local model weights, handles engine lifecycle for `llama.cpp` and `vLLM`, connects external OpenAI- and Anthropic-compatible providers, and serves a full-featured web UI and premium chat workspace — all from a single binary with zero dependencies. No wrappers, no abstraction layers; just bare-metal access to your engine with a management layer on top.
 
 Run `llama.cpp` or `vLLM`: use any build you want, or let QikLM install a managed `llama.cpp` release for you directly from Github. No lock-in, no bloat.
 
 - **Privacy**: 100% local and offline. Zero cloud telemetry. Your models and data never leave your machine.
 - **Orchestration**: Automatic model booting, VRAM management, lifecycle control, and real-time GPU monitoring (VRAM, temperature, power, load) via lmtop.
-- **PromptUI**: A premium chat workspace with an interactive canvas, multimodal support, document handling (PDF, DOCX, Office), OCR for images and PDFs, Brave web search, workspace projects, and HTTP MCP integration.
+- **PromptUI**: A premium chat workspace with an interactive canvas, multimodal support, document handling (PDF, DOCX, Office), OCR for images and PDFs, Brave web search, workspace projects, built-in memory that learns your preferences across chats, and HTTP MCP integration.
 - **Bring Your Own Inference**: Drop in your own `llama.cpp` or `vLLM` build, use a fork, or install up to 5 managed `llama.cpp` releases directly from the dashboard.
 - **Network-Ready**: Access the full web UI from any pc or mobile device on your network. Already on Tailscale or a VPN? Enable LAN mode and you're done.
 - **Convenience**: Studio-style ease of use with full engine flexibility and raw performance. No compromises.
@@ -78,7 +78,7 @@ QikLM sits between your inference engine and your applications, turning manual t
 - **Full CLI Passthrough**: The UI covers common flags, but every profile also has a raw CLI argument field for any `llama.cpp` or `vLLM` flag you need.
 - **Multi-Binary Support**: Register up to 5 different `llama.cpp` builds, or point at a single `vLLM` install. Assign specific builds per model profile to test newer features or optimizations.
 - **Remote API Providers**: Add hosted OpenAI-compatible providers like DeepSeek, MiniMax, GLM, and more. Run them side by side with your local models, all through one unified API.
-- **PromptUI Workspace**: Built-in chat GUI with an interactive canvas for live code editing and HTML previews, workspace projects, document handling (PDF, DOCX), image and PDF OCR, multimodal attachments, Brave web search, and MCP resource injection.
+- **PromptUI Workspace**: Built-in chat GUI with an interactive canvas for live code editing and HTML previews, workspace projects, document handling (PDF, DOCX), image and PDF OCR, multimodal attachments, Brave web search, built-in memory that learns who you are and your preferences across chats, and MCP resource injection.
 - **lmtop Telemetry**: Real-time GPU observability. Monitor VRAM, temperature, power, and load from the dashboard or PromptUI side panel.
 - **Auto VRAM Unloading**: Automatically frees GPU memory after a configurable period of inactivity.
 - **Model Library**: Automated file discovery, profile mapping, and one-click management for your entire weights collection.
